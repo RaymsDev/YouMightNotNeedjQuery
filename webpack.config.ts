@@ -1,6 +1,8 @@
-const path = require("path");
+import path from "path";
+import webpack from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-module.exports = {
+const config: webpack.Configuration = {
   entry: "./app.ts",
   mode: "development",
   module: {
@@ -20,7 +22,8 @@ module.exports = {
           {
             loader: "url-loader",
             options: {
-              limit: 8192
+              limit: 8192,
+              name: "[path][name].[ext]"
             }
           }
         ]
@@ -33,5 +36,12 @@ module.exports = {
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist")
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html"
+    })
+  ]
 };
+
+export default config;

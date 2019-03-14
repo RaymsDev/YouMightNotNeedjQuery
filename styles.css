@@ -1,0 +1,6 @@
+.image {
+  background-image: url("./assets/photo.jpg");
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+}
